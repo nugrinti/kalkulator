@@ -6,7 +6,8 @@ This project is an implementation of a comprehensive **Scientific Calculator**, 
 
 This calculator application offers a strong set of features for computation and learning needs:
 
-Feature Description
+| Feature | Description |
+| :--- | :--- |
 | **Matrix Operations** | Supports standard matrix operations (addition, subtraction, multiplication), and calculation of **Determinant**, **Inverse**, and **Transpose**. |
 | **Vector Operations** | Provides functions for vector operations such as addition, subtraction, scalar multiplication, **Dot Product**, and **Cross Product**. |
 | **Systems of Linear Equations (SLE/SPL)** | Capable of solving systems of linear equations (e.g., 2x2, 3x3) by displaying the steps or the final solution. |
