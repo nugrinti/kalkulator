@@ -2,9 +2,7 @@
 import numpy as np
 
 def read_table_to_matrix(table):
-    """
-    Mengonversi data dari QTableWidget ke dua matriks numpy: A (koefisien) dan B (konstanta)
-    """
+    """Mengonversi data dari QTableWidget ke matriks A dan B"""
     rows = table.rowCount()
     cols = table.columnCount()
     A = []
@@ -12,75 +10,102 @@ def read_table_to_matrix(table):
 
     for i in range(rows):
         row_data = []
-        for j in range(cols - 1):  # semua kolom kecuali kolom terakhir (konstanta)
+        for j in range(cols - 1):  # kolom variabel
             item = table.item(i, j)
-            value = float(item.text()) if item and item.text() != "" else 0.0
-            row_data.append(value)
+            val = float(item.text()) if item and item.text() else 0.0
+            row_data.append(val)
         A.append(row_data)
 
-        # kolom terakhir = konstanta
-        konst_item = table.item(i, cols - 1)
-        konst_val = float(konst_item.text()) if konst_item and konst_item.text() != "" else 0.0
-        B.append(konst_val)
+        # kolom konstanta (terakhir)
+        item_b = table.item(i, cols - 1)
+        val_b = float(item_b.text()) if item_b and item_b.text() else 0.0
+        B.append(val_b)
 
     return np.array(A, dtype=float), np.array(B, dtype=float)
 
-
 def solve_gaussian(A, B):
-    """ Menyelesaikan SPL dengan metode eliminasi Gauss """
+    """Eliminasi Gauss dengan Output Step-by-Step"""
     try:
         n = len(B)
-        augmented = np.concatenate((A, B.reshape(-1, 1)), axis=1)
+        # Gabungkan A dan B menjadi matriks augmented
+        M = np.hstack((A, B.reshape(-1, 1)))
+        
+        steps = ["=== MATRIKS AWAL ==="]
+        steps.append(str(M))
+        steps.append("\n=== PROSES ELIMINASI ===")
 
-        # Eliminasi maju
+        # Eliminasi Maju
         for i in range(n):
-            if augmented[i][i] == 0:
-                for j in range(i+1, n):
-                    if augmented[j][i] != 0:
-                        augmented[[i, j]] = augmented[[j, i]]
+            # Pivot checking
+            if M[i][i] == 0:
+                # Cari baris di bawahnya untuk ditukar
+                for k in range(i+1, n):
+                    if M[k][i] != 0:
+                        M[[i, k]] = M[[k, i]]
+                        steps.append(f"Tukar Baris R{i+1} dengan R{k+1} (Pivot 0):")
+                        steps.append(str(M))
                         break
+                else:
+                    return "Error: Matriks Singular (Pivot 0 tidak bisa ditukar)"
 
-            pivot = augmented[i][i]
-            augmented[i] = augmented[i] / pivot
+            # Buat pivot menjadi 1 (Opsional di Gauss murni, tapi bagus untuk visualisasi)
+            pivot = M[i][i]
+            if pivot != 1:
+                M[i] = M[i] / pivot
+                steps.append(f"R{i+1} dibagi {pivot:.2f} agar pivot utama = 1:")
+                steps.append(str(M))
 
+            # Nol-kan baris di bawahnya
             for j in range(i + 1, n):
-                factor = augmented[j][i]
-                augmented[j] = augmented[j] - factor * augmented[i]
+                factor = M[j][i]
+                if factor != 0:
+                    M[j] = M[j] - factor * M[i]
+                    steps.append(f"R{j+1} - ({factor:.2f} * R{i+1}):")
+                    steps.append(str(M))
 
-        # Substitusi balik
+        # Substitusi Balik
+        steps.append("\n=== SUBSTITUSI BALIK ===")
         x = np.zeros(n)
         for i in range(n - 1, -1, -1):
-            x[i] = augmented[i][-1] - np.dot(augmented[i][i+1:n], x[i+1:n])
+            val = M[i][-1]
+            sum_val = sum(M[i][j] * x[j] for j in range(i + 1, n))
+            x[i] = val - sum_val
+            steps.append(f"x{i+1} = {val:.2f} - {sum_val:.2f} = {x[i]:.4f}")
 
-        return x
+        steps.append("\n=== HASIL AKHIR ===")
+        result_str = "\n".join([f"x{i+1} = {val:.4f}" for i, val in enumerate(x)])
+        steps.append(result_str)
+
+        return "\n".join(steps)
+
     except Exception as e:
-        return f"Error (Gaussian): {e}"
-
+        return f"Terjadi kesalahan: {e}"
 
 def solve_inverse(A, B):
-    """ Menyelesaikan SPL dengan metode matriks invers """
     try:
         invA = np.linalg.inv(A)
         x = np.dot(invA, B)
-        return x
-    except np.linalg.LinAlgError:
-        return "Matriks tidak dapat diinvers (singular)."
-
+        return str(x)
+    except:
+        return "Matriks Singular (Tidak punya invers)"
 
 def solve_cramer(A, B):
-    """ Menyelesaikan SPL dengan aturan Cramer """
     try:
-        detA = np.linalg.det(A)
-        if detA == 0:
-            return "Determinan nol, SPL tidak memiliki solusi unik."
-
         n = A.shape[0]
-        x = np.zeros(n)
-
+        detA = np.linalg.det(A)
+        if abs(detA) < 1e-9:
+            return "Determinan 0, Metode Cramer tidak bisa dipakai."
+        
+        x = []
+        info = [f"Det Utama = {detA:.2f}"]
         for i in range(n):
-            Ai = np.copy(A)
+            Ai = A.copy()
             Ai[:, i] = B
-            x[i] = np.linalg.det(Ai) / detA
-        return x
+            detAi = np.linalg.det(Ai)
+            val = detAi / detA
+            x.append(val)
+            info.append(f"Dx{i+1} = {detAi:.2f} -> x{i+1} = {val:.4f}")
+        
+        return "\n".join(info)
     except Exception as e:
-        return f"Error (Cramer): {e}"
+        return str(e)
