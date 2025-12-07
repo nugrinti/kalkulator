@@ -36,6 +36,9 @@ class Ui_MainWindow(object):
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setGeometry(QRect(0, 0, 951, 571))
+        # ========================================================
+        # REVISI FINAL: PRESISI + SPACER (Agar Rapat ke Atas)
+        # ========================================================
         self.tab = QWidget()
         self.tab.setObjectName(u"tab")
         self.gridLayoutWidget = QWidget(self.tab)
@@ -44,109 +47,9 @@ class Ui_MainWindow(object):
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.label_12 = QLabel(self.gridLayoutWidget)
-        self.label_12.setObjectName(u"label_12")
+        self.gridLayout.setVerticalSpacing(5)
 
-        self.gridLayout.addWidget(self.label_12, 2, 2, 1, 1)
-
-        self.lineEdit_name = QLineEdit(self.gridLayoutWidget)
-        self.lineEdit_name.setObjectName(u"lineEdit_name")
-        self.lineEdit_name.setAutoFillBackground(False)
-
-        self.gridLayout.addWidget(self.lineEdit_name, 2, 3, 1, 1)
-
-        self.btn_checkLower = QPushButton(self.gridLayoutWidget)
-        self.btn_checkLower.setObjectName(u"btn_checkLower")
-
-        self.gridLayout.addWidget(self.btn_checkLower, 12, 4, 1, 1)
-
-        self.text_result = QLabel(self.gridLayoutWidget)
-        self.text_result.setObjectName(u"text_result")
-
-        self.gridLayout.addWidget(self.text_result, 15, 0, 1, 4)
-
-        self.tableWidget_matrix = QTableWidget(self.gridLayoutWidget)
-        self.tableWidget_matrix.setObjectName(u"tableWidget_matrix")
-
-        self.gridLayout.addWidget(self.tableWidget_matrix, 11, 0, 1, 4)
-
-        self.label_2 = QLabel(self.gridLayoutWidget)
-        self.label_2.setObjectName(u"label_2")
-
-        self.gridLayout.addWidget(self.label_2, 8, 0, 1, 1)
-
-        self.btn_clearOutput = QPushButton(self.gridLayoutWidget)
-        self.btn_clearOutput.setObjectName(u"btn_clearOutput")
-
-        self.gridLayout.addWidget(self.btn_clearOutput, 19, 4, 1, 1)
-
-        self.btn_displayDiagonal = QPushButton(self.gridLayoutWidget)
-        self.btn_displayDiagonal.setObjectName(u"btn_displayDiagonal")
-
-        self.gridLayout.addWidget(self.btn_displayDiagonal, 10, 4, 1, 1)
-
-        self.label_13 = QLabel(self.gridLayoutWidget)
-        self.label_13.setObjectName(u"label_13")
-
-        self.gridLayout.addWidget(self.label_13, 4, 2, 1, 1)
-
-        self.btn_checkIdentity_2 = QPushButton(self.gridLayoutWidget)
-        self.btn_checkIdentity_2.setObjectName(u"btn_checkIdentity_2")
-
-        self.gridLayout.addWidget(self.btn_checkIdentity_2, 5, 4, 1, 1)
-
-        self.pushButton_evaluate = QPushButton(self.gridLayoutWidget)
-        self.pushButton_evaluate.setObjectName(u"pushButton_evaluate")
-
-        self.gridLayout.addWidget(self.pushButton_evaluate, 14, 3, 1, 1)
-
-        self.spinBox_cols = QSpinBox(self.gridLayoutWidget)
-        self.spinBox_cols.setObjectName(u"spinBox_cols")
-
-        self.gridLayout.addWidget(self.spinBox_cols, 8, 3, 1, 1)
-
-        self.comboBox_type = QComboBox(self.gridLayoutWidget)
-        self.comboBox_type.addItem("")
-        self.comboBox_type.addItem("")
-        self.comboBox_type.setObjectName(u"comboBox_type")
-
-        self.gridLayout.addWidget(self.comboBox_type, 2, 1, 1, 1)
-
-        self.label_6 = QLabel(self.gridLayoutWidget)
-        self.label_6.setObjectName(u"label_6")
-
-        self.gridLayout.addWidget(self.label_6, 12, 0, 1, 4)
-
-        self.doubleSpinBox_scalar = QDoubleSpinBox(self.gridLayoutWidget)
-        self.doubleSpinBox_scalar.setObjectName(u"doubleSpinBox_scalar")
-
-        self.gridLayout.addWidget(self.doubleSpinBox_scalar, 4, 3, 1, 1)
-
-        self.label_10 = QLabel(self.gridLayoutWidget)
-        self.label_10.setObjectName(u"label_10")
-
-        self.gridLayout.addWidget(self.label_10, 2, 0, 1, 1)
-
-        self.lineEdit_expression = QLineEdit(self.gridLayoutWidget)
-        self.lineEdit_expression.setObjectName(u"lineEdit_expression")
-
-        self.gridLayout.addWidget(self.lineEdit_expression, 14, 1, 1, 2)
-
-        self.btn_checkIdentity_3 = QPushButton(self.gridLayoutWidget)
-        self.btn_checkIdentity_3.setObjectName(u"btn_checkIdentity_3")
-
-        self.gridLayout.addWidget(self.btn_checkIdentity_3, 6, 4, 1, 1)
-
-        self.btn_checkIdentity_4 = QPushButton(self.gridLayoutWidget)
-        self.btn_checkIdentity_4.setObjectName(u"btn_checkIdentity_4")
-
-        self.gridLayout.addWidget(self.btn_checkIdentity_4, 7, 4, 1, 1)
-
-        self.btn_checkSparse = QPushButton(self.gridLayoutWidget)
-        self.btn_checkSparse.setObjectName(u"btn_checkSparse")
-
-        self.gridLayout.addWidget(self.btn_checkSparse, 15, 4, 1, 1)
-
+        # --- BARIS 0: JUDUL ---
         self.label_9 = QLabel(self.gridLayoutWidget)
         self.label_9.setObjectName(u"label_9")
         font1 = QFont()
@@ -155,85 +58,173 @@ class Ui_MainWindow(object):
         font1.setBold(True)
         font1.setItalic(True)
         self.label_9.setFont(font1)
-
         self.gridLayout.addWidget(self.label_9, 0, 0, 1, 5)
 
+        # --- BARIS 1 ---
         self.label_8 = QLabel(self.gridLayoutWidget)
         self.label_8.setObjectName(u"label_8")
-
         self.gridLayout.addWidget(self.label_8, 1, 0, 1, 1)
-
-        self.btn_checkIdentity = QPushButton(self.gridLayoutWidget)
-        self.btn_checkIdentity.setObjectName(u"btn_checkIdentity")
-
-        self.gridLayout.addWidget(self.btn_checkIdentity, 13, 4, 1, 1)
-
-        self.spinBox_rows = QSpinBox(self.gridLayoutWidget)
-        self.spinBox_rows.setObjectName(u"spinBox_rows")
-
-        self.gridLayout.addWidget(self.spinBox_rows, 8, 1, 1, 1)
-
-        self.label_7 = QLabel(self.gridLayoutWidget)
-        self.label_7.setObjectName(u"label_7")
-
-        self.gridLayout.addWidget(self.label_7, 14, 0, 1, 1)
-
-        self.label_3 = QLabel(self.gridLayoutWidget)
-        self.label_3.setObjectName(u"label_3")
-
-        self.gridLayout.addWidget(self.label_3, 10, 0, 1, 4)
-
-        self.btn_displayMatrix = QPushButton(self.gridLayoutWidget)
-        self.btn_displayMatrix.setObjectName(u"btn_displayMatrix")
-
-        self.gridLayout.addWidget(self.btn_displayMatrix, 8, 4, 1, 1)
-
-        self.btn_checkZero = QPushButton(self.gridLayoutWidget)
-        self.btn_checkZero.setObjectName(u"btn_checkZero")
-
-        self.gridLayout.addWidget(self.btn_checkZero, 14, 4, 1, 1)
 
         self.spinBox_4 = QSpinBox(self.gridLayoutWidget)
         self.spinBox_4.setObjectName(u"spinBox_4")
-
         self.gridLayout.addWidget(self.spinBox_4, 1, 1, 1, 1)
-
-        self.listWidget_objects = QListWidget(self.gridLayoutWidget)
-        self.listWidget_objects.setObjectName(u"listWidget_objects")
-
-        self.gridLayout.addWidget(self.listWidget_objects, 13, 0, 1, 4)
-
-        self.btn_checkUpper = QPushButton(self.gridLayoutWidget)
-        self.btn_checkUpper.setObjectName(u"btn_checkUpper")
-
-        self.gridLayout.addWidget(self.btn_checkUpper, 11, 4, 1, 1)
-
-        self.textEdit_result = QTextEdit(self.gridLayoutWidget)
-        self.textEdit_result.setObjectName(u"textEdit_result")
-
-        self.gridLayout.addWidget(self.textEdit_result, 16, 0, 7, 4)
-
-        self.label = QLabel(self.gridLayoutWidget)
-        self.label.setObjectName(u"label")
-
-        self.gridLayout.addWidget(self.label, 8, 2, 1, 1)
-
-        self.btn_checkIdentity_5 = QPushButton(self.gridLayoutWidget)
-        self.btn_checkIdentity_5.setObjectName(u"btn_checkIdentity_5")
-
-        self.gridLayout.addWidget(self.btn_checkIdentity_5, 4, 4, 1, 1)
-
-        self.pushButton_add = QPushButton(self.gridLayoutWidget)
-        self.pushButton_add.setObjectName(u"pushButton_add")
-
-        self.gridLayout.addWidget(self.pushButton_add, 2, 4, 1, 1)
 
         self.label_4 = QLabel(self.gridLayoutWidget)
         self.label_4.setObjectName(u"label_4")
-
         self.gridLayout.addWidget(self.label_4, 1, 4, 1, 1)
 
+        # --- BARIS 2 ---
+        self.label_10 = QLabel(self.gridLayoutWidget)
+        self.label_10.setObjectName(u"label_10")
+        self.gridLayout.addWidget(self.label_10, 2, 0, 1, 1)
+
+        self.comboBox_type = QComboBox(self.gridLayoutWidget)
+        self.comboBox_type.addItem("")
+        self.comboBox_type.addItem("")
+        self.comboBox_type.setObjectName(u"comboBox_type")
+        self.gridLayout.addWidget(self.comboBox_type, 2, 1, 1, 1)
+
+        self.label_12 = QLabel(self.gridLayoutWidget)
+        self.label_12.setObjectName(u"label_12")
+        self.gridLayout.addWidget(self.label_12, 2, 2, 1, 1)
+
+        self.lineEdit_name = QLineEdit(self.gridLayoutWidget)
+        self.lineEdit_name.setObjectName(u"lineEdit_name")
+        self.lineEdit_name.setAutoFillBackground(False)
+        self.gridLayout.addWidget(self.lineEdit_name, 2, 3, 1, 1)
+
+        self.pushButton_add = QPushButton(self.gridLayoutWidget)
+        self.pushButton_add.setObjectName(u"pushButton_add")
+        self.gridLayout.addWidget(self.pushButton_add, 2, 4, 1, 1)
+
+        # --- BARIS 3 ---
+        self.btn_checkIdentity_5 = QPushButton(self.gridLayoutWidget)
+        self.btn_checkIdentity_5.setObjectName(u"btn_checkIdentity_5")
+        self.gridLayout.addWidget(self.btn_checkIdentity_5, 3, 4, 1, 1)
+
+        # --- BARIS 4 ---
+        self.label_13 = QLabel(self.gridLayoutWidget)
+        self.label_13.setObjectName(u"label_13")
+        self.gridLayout.addWidget(self.label_13, 4, 2, 1, 1)
+
+        self.doubleSpinBox_scalar = QDoubleSpinBox(self.gridLayoutWidget)
+        self.doubleSpinBox_scalar.setObjectName(u"doubleSpinBox_scalar")
+        self.gridLayout.addWidget(self.doubleSpinBox_scalar, 4, 3, 1, 1)
+
+        self.btn_checkIdentity_2 = QPushButton(self.gridLayoutWidget)
+        self.btn_checkIdentity_2.setObjectName(u"btn_checkIdentity_2")
+        self.gridLayout.addWidget(self.btn_checkIdentity_2, 4, 4, 1, 1)
+
+        # --- BARIS 5, 6, 7 (MENU KANAN) ---
+        self.btn_checkIdentity_3 = QPushButton(self.gridLayoutWidget)
+        self.btn_checkIdentity_3.setObjectName(u"btn_checkIdentity_3")
+        self.gridLayout.addWidget(self.btn_checkIdentity_3, 5, 4, 1, 1)
+
+        self.btn_checkIdentity_4 = QPushButton(self.gridLayoutWidget)
+        self.btn_checkIdentity_4.setObjectName(u"btn_checkIdentity_4")
+        self.gridLayout.addWidget(self.btn_checkIdentity_4, 6, 4, 1, 1)
+
+        self.btn_displayMatrix = QPushButton(self.gridLayoutWidget)
+        self.btn_displayMatrix.setObjectName(u"btn_displayMatrix")
+        self.gridLayout.addWidget(self.btn_displayMatrix, 7, 4, 1, 1)
+
+        # --- BARIS 8 (DIMENSI) ---
+        self.label_2 = QLabel(self.gridLayoutWidget)
+        self.label_2.setObjectName(u"label_2")
+        self.gridLayout.addWidget(self.label_2, 8, 0, 1, 1)
+
+        self.spinBox_rows = QSpinBox(self.gridLayoutWidget)
+        self.spinBox_rows.setObjectName(u"spinBox_rows")
+        self.gridLayout.addWidget(self.spinBox_rows, 8, 1, 1, 1)
+
+        self.label = QLabel(self.gridLayoutWidget)
+        self.label.setObjectName(u"label")
+        self.gridLayout.addWidget(self.label, 8, 2, 1, 1)
+
+        self.spinBox_cols = QSpinBox(self.gridLayoutWidget)
+        self.spinBox_cols.setObjectName(u"spinBox_cols")
+        self.gridLayout.addWidget(self.spinBox_cols, 8, 3, 1, 1)
+
+        self.btn_displayDiagonal = QPushButton(self.gridLayoutWidget)
+        self.btn_displayDiagonal.setObjectName(u"btn_displayDiagonal")
+        self.gridLayout.addWidget(self.btn_displayDiagonal, 8, 4, 1, 1)
+
+        # --- BARIS 9 (LABEL ISI) ---
+        self.label_3 = QLabel(self.gridLayoutWidget)
+        self.label_3.setObjectName(u"label_3")
+        self.gridLayout.addWidget(self.label_3, 9, 0, 1, 4)
+
+        self.btn_checkUpper = QPushButton(self.gridLayoutWidget)
+        self.btn_checkUpper.setObjectName(u"btn_checkUpper")
+        self.gridLayout.addWidget(self.btn_checkUpper, 9, 4, 1, 1)
+
+        # --- BARIS 10: TABEL (TINGGI FIX: 120px) ---
+        self.tableWidget_matrix = QTableWidget(self.gridLayoutWidget)
+        self.tableWidget_matrix.setObjectName(u"tableWidget_matrix")
+        self.tableWidget_matrix.setMinimumHeight(120)
+        self.tableWidget_matrix.setMaximumHeight(120)
+        self.gridLayout.addWidget(self.tableWidget_matrix, 10, 0, 2, 4)
+
+        self.btn_checkLower = QPushButton(self.gridLayoutWidget)
+        self.btn_checkLower.setObjectName(u"btn_checkLower")
+        self.gridLayout.addWidget(self.btn_checkLower, 10, 4, 1, 1)
+
+        self.btn_checkIdentity = QPushButton(self.gridLayoutWidget)
+        self.btn_checkIdentity.setObjectName(u"btn_checkIdentity")
+        self.gridLayout.addWidget(self.btn_checkIdentity, 11, 4, 1, 1)
+
+        # --- BARIS 12: DAFTAR INPUT LABEL ---
+        self.label_6 = QLabel(self.gridLayoutWidget)
+        self.label_6.setObjectName(u"label_6")
+        self.gridLayout.addWidget(self.label_6, 12, 0, 1, 4)
+
+        # --- BARIS 13: LIST WIDGET (TINGGI FIX: 50px) & CHECK SPARSE ---
+        self.listWidget_objects = QListWidget(self.gridLayoutWidget)
+        self.listWidget_objects.setObjectName(u"listWidget_objects")
+        self.listWidget_objects.setMinimumHeight(50) 
+        self.listWidget_objects.setMaximumHeight(50)
+        self.gridLayout.addWidget(self.listWidget_objects, 13, 0, 1, 4)
+
+        self.btn_checkSparse = QPushButton(self.gridLayoutWidget)
+        self.btn_checkSparse.setObjectName(u"btn_checkSparse")
+        self.gridLayout.addWidget(self.btn_checkSparse, 13, 4, 1, 1)
+
+        # --- BARIS 14: OPERASI & CHECK ZERO ---
+        self.label_7 = QLabel(self.gridLayoutWidget)
+        self.label_7.setObjectName(u"label_7")
+        self.gridLayout.addWidget(self.label_7, 14, 0, 1, 1)
+
+        self.lineEdit_expression = QLineEdit(self.gridLayoutWidget)
+        self.lineEdit_expression.setObjectName(u"lineEdit_expression")
+        self.gridLayout.addWidget(self.lineEdit_expression, 14, 1, 1, 2)
+
+        self.pushButton_evaluate = QPushButton(self.gridLayoutWidget)
+        self.pushButton_evaluate.setObjectName(u"pushButton_evaluate")
+        self.gridLayout.addWidget(self.pushButton_evaluate, 14, 3, 1, 1)
+
+        self.btn_checkZero = QPushButton(self.gridLayoutWidget)
+        self.btn_checkZero.setObjectName(u"btn_checkZero")
+        self.gridLayout.addWidget(self.btn_checkZero, 14, 4, 1, 1)
+
+        # --- WIDGET "ORPHAN" (Dibuat tapi tidak dimasukkan ke Grid) ---
+        # Ini PENTING agar main.py tidak error saat memanggil self.textEdit_result
+        self.text_result = QLabel(self.gridLayoutWidget)
+        self.text_result.setObjectName(u"text_result")
+        
+        self.textEdit_result = QTextEdit(self.gridLayoutWidget)
+        self.textEdit_result.setObjectName(u"textEdit_result")
+        
+        self.btn_clearOutput = QPushButton(self.gridLayoutWidget)
+        self.btn_clearOutput.setObjectName(u"btn_clearOutput")
+
+        # --- SPACER (PENYANGGA) ---
+        # Tambahkan spacer di bawah agar semua widget di atas "didorong" naik dan rapat
+        from PySide6.QtWidgets import QSpacerItem, QSizePolicy
+        verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.gridLayout.addItem(verticalSpacer, 15, 0, 1, 5)
+
         self.tabWidget.addTab(self.tab, "")
+        # ========================================================
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
         self.gridLayoutWidget_2 = QWidget(self.tab_2)

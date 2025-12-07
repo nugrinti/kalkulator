@@ -39,6 +39,21 @@
       "time": "2025-12-07 10:48:49",
       "expression": "A+B",
       "result": "[[2. 2.]\n [2. 2.]]"
+    },
+    {
+      "time": "2025-12-07 14:13:24",
+      "expression": "A + A",
+      "result": "[[2. 2.]\n [0. 2.]]"
+    },
+    {
+      "time": "2025-12-07 14:14:03",
+      "expression": "A + B",
+      "result": "[[2. 1.]\n [1. 2.]]"
+    },
+    {
+      "time": "2025-12-07 14:15:22",
+      "expression": "A * B",
+      "result": "[[2. 1.]\n [1. 1.]]"
     }
   ],
   "spl": [
@@ -66,6 +81,21 @@
       "time": "2025-12-07 02:57:41",
       "expression": "Cramer",
       "result": "Determinan 0, Metode Cramer tidak bisa dipakai."
+    },
+    {
+      "time": "2025-12-07 12:41:14",
+      "expression": "Inverse",
+      "result": "[-4.66666667  0.33333333]"
+    },
+    {
+      "time": "2025-12-07 12:41:16",
+      "expression": "Cramer",
+      "result": "Det Utama = 3.00\nDx1 = -14.00 -> x1 = -4.6667\nDx2 = 1.00 -> x2 = 0.3333"
+    },
+    {
+      "time": "2025-12-07 12:41:19",
+      "expression": "Gauss",
+      "result": "=== MATRIKS AWAL ===\n[[ 1. 23.  3.]\n [ 0.  3.  1.]]\n\n=== PROSES ELIMINASI ===\nR2 dibagi 3.00 agar pivot utama = 1:\n[[ 1.         23.          3.        ]\n [ 0.          1.          0.33333333]]\n\n=== SUBSTITUSI BALIK ===\nx2 = 0.33 - 0.00 = 0.3333\nx1 = 3.00 - 7.67 = -4.6667\n\n=== HASIL AKHIR ===\nx1 = -4.6667\nx2 = 0.3333"
     }
   ],
   "vector": [
@@ -148,6 +178,21 @@
       "time": "2025-12-07 02:52:15",
       "expression": "Angle",
       "result": "97.45\u00b0"
+    },
+    {
+      "time": "2025-12-07 12:42:05",
+      "expression": "Add",
+      "result": "[2. 4. 6.]"
+    },
+    {
+      "time": "2025-12-07 12:42:08",
+      "expression": "Sub",
+      "result": "[0. 0. 0.]"
+    },
+    {
+      "time": "2025-12-07 12:42:10",
+      "expression": "Projection",
+      "result": "[1. 2. 3.]"
     }
   ]
 }
