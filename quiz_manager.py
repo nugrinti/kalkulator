@@ -14,8 +14,13 @@ def generate_matrix_quiz():
 
 
 def generate_spl_quiz():
-    """Buat soal SPL sederhana 2x2"""
-    A = np.random.randint(1, 5, (2, 2))
+    """Buat soal SPL sederhana 2x2 (Pastikan tidak singular)"""
+    while True:
+        A = np.random.randint(1, 5, (2, 2))
+        # Cek apakah determinan tidak nol (matriks aman)
+        if abs(np.linalg.det(A)) > 1e-9: 
+            break
+            
     B = np.random.randint(1, 10, (2,))
     x = np.linalg.solve(A, B)
     question = f"Temukan x dan y jika {A.tolist()} * [x,y]ᵀ = {B.tolist()}"

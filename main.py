@@ -197,8 +197,7 @@ class MainApp(QMainWindow, Ui_MainWindow):
         self.show_history_dialog(Ui_MatrixHistory, "matrix")
 
     def quiz_matrix(self):
-        q, ans = generate_matrix_quiz()
-        QMessageBox.information(self, "Kuis Matriks", f"Soal:\n{q}\n\n(Coba kerjakan dulu, klik OK untuk lihat jawaban)\n\nJawaban:\n{ans}")
+        self.run_interactive_quiz("Kuis Matriks", generate_matrix_quiz)
 
     # ---------------------------
     # TAB 2: SPL
@@ -273,8 +272,7 @@ class MainApp(QMainWindow, Ui_MainWindow):
         self.show_history_dialog(Ui_SPLHistory, "spl")
 
     def quiz_spl(self):
-        q, ans = generate_spl_quiz()
-        QMessageBox.information(self, "Kuis SPL", f"{q}\n\nJawaban:\n{ans}")
+        self.run_interactive_quiz("Kuis SPL", generate_spl_quiz)
 
     # ---------------------------
     # TAB 3: VEKTOR
@@ -428,8 +426,7 @@ class MainApp(QMainWindow, Ui_MainWindow):
         self.show_history_dialog(Ui_VectorHistory, "vector")
 
     def quiz_vector(self):
-        q, ans = generate_vector_quiz()
-        QMessageBox.information(self, "Kuis Vektor", f"{q}\n\nJawaban:\n{ans}")
+        self.run_interactive_quiz("Kuis Vektor", generate_vector_quiz)
 
     # ---------------------------
     # HELPER UMUM
@@ -460,6 +457,29 @@ class MainApp(QMainWindow, Ui_MainWindow):
             
         dialog.exec()
 
+    # --- HELPER BARU UNTUK KUIS INTERAKTIF ---
+    def run_interactive_quiz(self, title, quiz_generator):
+        """Menampilkan soal dulu, jawaban muncul setelah klik tombol"""
+        q, ans = quiz_generator()
+        
+        # 1. Buat Dialog Soal
+        msg = QMessageBox(self)
+        msg.setWindowTitle(title)
+        msg.setText(f"SOAL:\n{q}")
+        msg.setIcon(QMessageBox.Question)
+        
+        # 2. Bikin Tombol Custom
+        # Ganti tombol OK standar jadi "Lihat Jawaban"
+        btn_lihat = msg.addButton("Jawaban", QMessageBox.AcceptRole)
+        btn_tutup = msg.addButton("Menyerah", QMessageBox.RejectRole)
+        
+        # 3. Tampilkan Dialog
+        msg.exec()
+        
+        # 4. Cek Tombol mana yang diklik user
+        if msg.clickedButton() == btn_lihat:
+            # Tampilkan Jawaban di Pop-up baru
+            QMessageBox.information(self, f"Jawaban {title}", f"Jawabannya adalah:\n\n{ans}")
 # -------------------------------
 # ENTRY POINT
 # -------------------------------
